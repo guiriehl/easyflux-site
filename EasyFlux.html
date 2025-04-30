@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyFlux - Gestão Financeira Simples para MEIs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3), 0 2px 4px -1px rgba(16, 185, 129, 0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3), 0 4px 6px -2px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-3">
+                    <i class="fas fa-chart-line text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-emerald-600">EasyFlux</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-emerald-600 transition">Como funciona</a>
+                <a href="#benefits" class="text-gray-600 hover:text-emerald-600 transition">Benefícios</a>
+                <a href="#waitlist" class="text-gray-600 hover:text-emerald-600 transition">Lista de espera</a>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                    Controle seu negócio sem contador nem complicação
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8">
+                    A EasyFlux ajuda microempreendedores a organizar entradas, saídas e ver quanto realmente lucraram no mês — tudo em poucos cliques.
+                </p>
+                <button onclick="openWaitlistModal()" class="cta-button bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-lg text-lg">
+                    Quero ser avisado no lançamento
+                </button>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-emerald-100 rounded-2xl"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-200 rounded-2xl"></div>
+                    <div class="relative bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-semibold text-gray-800">Resumo do Mês</h3>
+                            <span class="text-sm text-emerald-600 bg-emerald-100 px-2 py-1 rounded">MEI</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-arrow-down text-emerald-600"></i>
+                                    </div>
+                                    <span class="text-gray-700">Entradas</span>
+                                </div>
+                                <span class="font-semibold">R$ 5.420,00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-arrow-up text-red-600"></i>
+                                    </div>
+                                    <span class="text-gray-700">Saídas</span>
+                                </div>
+                                <span class="font-semibold">R$ 2.150,00</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-4 mt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800">Lucro Real</span>
+                                    <span class="text-xl font-bold text-emerald-600">R$ 3.270,00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Tudo o que você precisa em um só lugar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-coins text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Ver lucro real</h3>
+                    <p class="text-gray-600">
+                        Saiba exatamente quanto você está ganhando depois de todas as despesas, sem precisar fazer contas complicadas.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-bell text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Receber alertas de contas</h3>
+                    <p class="text-gray-600">
+                        Nunca mais perca o prazo de pagamento. Nós avisamos quando suas contas estão perto de vencer.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-file-invoice text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Emitir documentos simples</h3>
+                    <p class="text-gray-600">
+                        Crie notas fiscais e recibos em segundos, sem precisar entender todas as regras complicadas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Feito para quem não tem tempo (nem paciência) com burocracia</h2>
+                    <p class="text-lg text-gray-700 mb-8">
+                        Nós sabemos que seu foco é no seu negócio, não em planilhas e documentos. Por isso criamos a EasyFlux: uma forma simples de manter tudo organizado sem dor de cabeça.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Sem mensalidade cara de contador</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Funciona mesmo sem internet constante</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Avisos importantes por WhatsApp</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Pronto para usar em 5 minutos</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-comment-dots text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Suporte rápido</h3>
+                                <p class="text-sm text-gray-500">Nossa equipe responde em até 2 horas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div class="bg-gray-100 p-3 rounded-lg max-w-xs">
+                                    <p class="text-gray-800">Oi, como faço pra emitir uma nota fiscal?</p>
+                                    <p class="text-xs text-gray-500 mt-1">10:24 AM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start justify-end">
+                                <div class="bg-emerald-100 p-3 rounded-lg max-w-xs">
+                                    <p class="text-gray-800">Olá! É bem simples: vá em "Documentos" > "Nova Nota", preencha os dados do cliente e valor. Pronto! 😊</p>
+                                    <p class="text-xs text-gray-500 mt-1 text-right">10:26 AM</p>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center ml-3">
+                                    <i class="fas fa-headset text-emerald-600"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div class="bg-gray-100 p-3 rounded-lg max-w-xs">
+                                    <p class="text-gray-800">Muito obrigado! Funcionou perfeitamente 👏</p>
+                                    <p class="text-xs text-gray-500 mt-1">10:28 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="waitlist" class="py-16 bg-emerald-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Pronto para simplificar sua vida?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Estamos lançando em breve! Cadastre seu e-mail ou WhatsApp para ser um dos primeiros a testar.
+            </p>
+            <button onclick="openWaitlistModal()" class="cta-button bg-white hover:bg-gray-100 text-emerald-600 font-semibold py-3 px-8 rounded-lg text-lg">
+                Quero ser avisado no lançamento
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold">EasyFlux</span>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">
+                        A forma mais simples de gerenciar seu pequeno negócio, feito especialmente para microempreendedores.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Produto</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Funcionalidades</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Preços</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Empresa</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Sobre nós</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacidade</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Termos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 EasyFlux. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 relative">
+            <button onclick="closeWaitlistModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Seja um dos primeiros!</h3>
+            <p class="text-gray-600 mb-6">Cadastre-se para receber acesso antecipado ao EasyFlux.</p>
+            
+            <form id="waitlistForm" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Seu nome</label>
+                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Como prefere ser chamado">
+                </div>
+                
+                <div>
+                    <label for="contact" class="block text-sm font-medium text-gray-700 mb-1">E-mail ou WhatsApp</label>
+                    <input type="text" id="contact" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Seu e-mail ou número com DDD">
+                </div>
+                
+                <div>
+                    <label for="business" class="block text-sm font-medium text-gray-700 mb-1">Qual seu negócio?</label>
+                    <input type="text" id="business" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Ex: Lanchonete, Costureira...">
+                </div>
+                
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg">
+                    Me avise quando lançar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-emerald-600 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Cadastro confirmado!</h3>
+            <p class="text-gray-600 mb-6">Você será um dos primeiros a testar o EasyFlux. Enviaremos novidades em breve.</p>
+            <button onclick="closeSuccessModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-6 rounded-lg">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openWaitlistModal() {
+            document.getElementById('waitlistModal').classList.remove('hidden');
+        }
+        
+        function closeWaitlistModal() {
+            document.getElementById('waitlistModal').classList.add('hidden');
+        }
+        
+        function openSuccessModal() {
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+        
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+        
+        // Form submission
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            closeWaitlistModal();
+            openSuccessModal();
+            
+            // Here you would typically send the form data to your backend
+            // For this example, we're just showing the success modal
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
